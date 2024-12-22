@@ -1,1 +1,9 @@
+.ipynb_checkpoints
 DataEngVenv/
+ny_taxi_postgres_data
+
+# Data and files
+yellow_tripdata_2024-01.csv
+yellow_head.csv
+data_dictionary_trip_records_yellow.pdf
+taxi_zone_lookup.csv
