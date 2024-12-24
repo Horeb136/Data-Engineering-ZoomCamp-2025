@@ -1,8 +1,9 @@
 .ipynb_checkpoints
 DataEngVenv/
-ny_taxi_postgres_data
+Week01/ny_taxi_postgres_data
 */.env
 .env
+Week01/pgadmin-data
 
 # Data and files
 Week01/data_dictionary_trip_records_yellow.pdf
@@ -11,3 +12,4 @@ Week01/data_dictionary_trip_records_yellow.pdf
 # Week01/yellow_tripdata_2024-01.csv
 Week01/*.csv
 Week01/*.parquet
+Week01/pgpassfile
