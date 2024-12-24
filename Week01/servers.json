@@ -1,0 +1,14 @@
+{
+    "Servers": {
+      "1": {
+        "Name": "Local Database",
+        "Group": "Servers",
+        "Host": "pgdatabase",
+        "Port": 5432,
+        "MaintenanceDB": "ny_taxi",
+        "Username": "root",
+        "SSLMode": "prefer",
+        "PassFile": "/pgadmin4/pgpassfile"
+      }
+    }
+  }
