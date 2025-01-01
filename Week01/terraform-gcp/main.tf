@@ -9,13 +9,14 @@ terraform {
 
 provider "google" {
   #credentials = "./keys/my-creds.json" ##No need because we already export the path of the credentials into the path variables 
-  project = "gold-yen-446410-g4"
-  region  = "us-central1"
+  credentials = file(var.credentials_file)
+  project     = var.project_id
+  region      = var.project_region
 }
 
 resource "google_storage_bucket" "demo-bucket" {
-  name          = "gold-yen-446410-g4-terra-bucket"
-  location      = "US"
+  name          = var.gcs_bucket_name
+  location      = var.location
   force_destroy = true
 
   lifecycle_rule {
@@ -35,4 +36,9 @@ resource "google_storage_bucket" "demo-bucket" {
       type = "AbortIncompleteMultipartUpload"
     }
   }
+}
+
+resource "google_bigquery_dataset" "demo_dataset" {
+  dataset_id = var.bq_dataset_name
+  location   = var.location
 }
