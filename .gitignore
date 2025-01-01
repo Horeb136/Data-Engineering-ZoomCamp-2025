@@ -1,7 +1,6 @@
 .ipynb_checkpoints
 **/ny_taxi_postgres_data
-*/.env
-.env
+**/.env
 **/pgadmin-data
 DataEngVenv
 
