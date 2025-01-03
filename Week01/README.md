@@ -40,7 +40,7 @@ This week focuses on setting up the development environment, containerization wi
 │   ├── servers.json              # pgAdmin server configuration file
 │   ├── output.csv                # Example processed data in csv format (excluded via .gitignore)
 │   ├── output.parquet            # Example data in parquet format (excluded via .gitignore)
-├── terraform-gcp
+── terraform-gcp
 │   ├── main.tf                   # Terraform config for GCP resources
 │   ├── variables.tf              # Terraform variable definitions
 │   ├── keys/my-creds.json        # GCP credentials (excluded via .gitignore)
