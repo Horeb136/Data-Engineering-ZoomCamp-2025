@@ -1,0 +1,17 @@
+Package         Version
+--------------- -------
+fqdn            1.5.1
+isoduration     20.11.0
+jsonpointer     3.0.0
+jupyter         1.1.1
+pandas          2.2.3
+pgcli           4.1.0
+pip             24.0
+psycopg-binary  3.2.3
+psycopg2        2.9.10
+psycopg2-binary 2.9.10
+pyarrow         18.1.0
+python-dotenv   1.0.1
+SQLAlchemy      2.0.36
+uri-template    1.3.0
+webcolors       24.11.1
