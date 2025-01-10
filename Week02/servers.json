@@ -3,10 +3,10 @@
       "1": {
         "Name": "Local Database",
         "Group": "Servers",
-        "Host": "pgdatabase",
+        "Host": "postgres",
         "Port": 5432,
-        "MaintenanceDB": "ny_taxi",
-        "Username": "root",
+        "MaintenanceDB": "kestra",
+        "Username": "kestra",
         "SSLMode": "prefer",
         "PassFile": "/pgadmin4/pgpassfile"
       }
