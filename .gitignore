@@ -9,6 +9,7 @@ DataEngVenv
 **/*.csv
 **/*.parquet
 **/pgpassfile
+**/04_gcp_kv.yaml
 
 # Terraform 
 # Local .terraform directories
