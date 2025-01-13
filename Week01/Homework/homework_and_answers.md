@@ -104,6 +104,9 @@ Download this data and put it into Postgres.
 You can use the code from the course. It's up to you whether
 you want to use Jupyter or a python script.
 
+### Preparation
+To be prepared for the following question, we use the file `docker-compose.yml` in the **Homework** directory to run postgres and pgAdmin, and then the notebook `upload_data.ipynb` to ingest both datasets.
+
 ## Question 3. Trip Segmentation Count
 
 During the period of October 1st 2019 (inclusive) and November 1st 2019 (exclusive), how many trips, **respectively**, happened:
@@ -121,6 +124,43 @@ Answers:
 - 101,056;  202,661;  109,603;  27,678;  35,189
 - 104,838;  199,013;  109,645;  27,688;  35,202
 
+### Answer
+To answer this question, the SQL command line used is : 
+```sql
+SELECT
+    SUM(CASE 
+        WHEN trip_distance <= 1 THEN 1 
+        ELSE 0 
+    END) AS trips_up_to_1_mile,
+    
+    SUM(CASE 
+        WHEN trip_distance > 1 AND trip_distance <= 3 THEN 1 
+        ELSE 0 
+    END) AS trips_between_1_and_3_miles,
+    
+    SUM(CASE 
+        WHEN trip_distance > 3 AND trip_distance <= 7 THEN 1 
+        ELSE 0 
+    END) AS trips_between_3_and_7_miles,
+    
+    SUM(CASE 
+        WHEN trip_distance > 7 AND trip_distance <= 10 THEN 1 
+        ELSE 0 
+    END) AS trips_between_7_and_10_miles,
+    
+    SUM(CASE 
+        WHEN trip_distance > 10 THEN 1 
+        ELSE 0 
+    END) AS trips_over_10_miles
+
+FROM green_taxi_data
+WHERE CAST(lpep_pickup_datetime AS DATE) >= '2019-10-01'
+AND CAST(lpep_dropoff_datetime AS DATE) < '2019-11-01';
+
+```
+But we get answers, totally different from the suggestions. We get : 
+**78964 ; 150850 ; 90020 ; 24074 ; 32294**. I don't know if there is a mistake.
+
 
 ## Question 4. Longest trip for each day
 
@@ -135,6 +175,22 @@ Tip: For every day, we only care about one single trip with the longest distance
 - 2019-10-31
 
 
+### ANswer
+SQL : 
+```sql
+WITH daily_longest_trip AS (
+	SELECT CAST(lpep_pickup_datetime AS DATE) AS pickup_date , MAX(trip_distance) AS max_trip_distance
+	FROM green_taxi_data
+	GROUP BY CAST(lpep_pickup_datetime AS DATE)
+)
+SELECT pickup_date, max_trip_distance
+FROM daily_longest_trip
+ORDER BY max_trip_distance DESC
+LIMIT 1
+```
+
+The answer is **2019-10-31**
+
 ## Question 5. Three biggest pickup zones
 
 Which were the top pickup locations with over 13,000 in
@@ -146,6 +202,21 @@ Consider only `lpep_pickup_datetime` when filtering by date.
 - East Harlem North, Morningside Heights
 - Morningside Heights, Astoria Park, East Harlem South
 - Bedford, East Harlem North, Astoria Park
+
+
+### Answer
+SQL
+
+```sql
+SELECT z."Zone", SUM(total_amount) AS total_amount_2019_10_18
+FROM green_taxi_data g
+JOIN zones z ON g."PULocationID"  = z."LocationID"
+WHERE CAST(lpep_pickup_datetime AS DATE) = '2019-10-18'
+GROUP BY z."Zone"
+HAVING SUM(total_amount) > 13000
+
+```
+Answer is **East Harlem North, East Harlem South, Morningside Heights**
 
 
 ## Question 6. Largest tip
@@ -162,6 +233,26 @@ We need the name of the zone, not the ID.
 - JFK Airport
 - East Harlem North
 - East Harlem South
+
+
+### Answer 
+Code : 
+```sql
+SELECT zdo."Zone", MAX(tip_amount) AS total_tip
+
+FROM green_taxi_data g
+JOIN zones zpu ON g."PULocationID"  = zpu."LocationID"
+JOIN zones zdo ON g."DOLocationID"  = zdo."LocationID"
+
+WHERE CAST(lpep_pickup_datetime AS DATE) <= '2019-10-31'
+AND zpu."Zone" = 'East Harlem North'
+
+GROUP BY zdo."Zone"
+ORDER BY total_tip DESC
+LIMIT 1
+```
+
+Answer : **JFK Airport**
 
 
 ## Terraform
