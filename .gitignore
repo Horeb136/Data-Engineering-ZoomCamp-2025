@@ -3,6 +3,7 @@
 **/.env
 **/pgadmin-data
 DataEngVenv
+**/pull_request
 
 # Data and files
 **/data_dictionary_trip_records_yellow.pdf

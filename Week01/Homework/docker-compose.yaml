@@ -1,0 +1,29 @@
+services: 
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    volumes: 
+      - "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5433:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    user: "5050:5050"
+    volumes:
+      - "./pgadmin-data:/var/lib/pgadmin"
+      - "./pgpassfile:/pgadmin4/pgpassfile"
+      - "./servers.json:/pgadmin4/servers.json"
+    ports:
+      - "8080:80"
+    entrypoint: >
+      bash -c "mkdir -p /var/lib/pgadmin/sessions &&
+               chown -R 5050:5050 /var/lib/pgadmin &&
+               chmod -R 700 /var/lib/pgadmin &&
+               exec /entrypoint.sh"

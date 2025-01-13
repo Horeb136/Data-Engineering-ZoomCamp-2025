@@ -113,13 +113,13 @@ To launch the Docker Compose file (`docker-compose.yaml`), follow these steps:
 
 
 ## Commands Summary
-**See my [notes on notion](https://www.notion.so/Week-1-Containerization-and-Infrastructure-as-Code-15729780dc4a80a08288e497ba937a37?pvs=4) for more details.**
+**See my [notes on notion](https://spotted-hardhat-eea.notion.site/Week-1-Containerization-and-Infrastructure-as-Code-15729780dc4a80a08288e497ba937a37) for more details.**
 
 ---
 
 ## Resources
 
-- [My Notes on Notion](https://www.notion.so/Week-1-Containerization-and-Infrastructure-as-Code-15729780dc4a80a08288e497ba937a37?pvs=4)
+- [My Notes on Notion](https://spotted-hardhat-eea.notion.site/Week-1-Containerization-and-Infrastructure-as-Code-15729780dc4a80a08288e497ba937a37)
 - [Course Playlist](https://www.youtube.com/playlist?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
 - [Course Materials](https://github.com/DataTalksClub/data-engineering-zoomcamp)
 - [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)

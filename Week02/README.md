@@ -127,7 +127,7 @@ pgAdmin is pre-configured via the `servers.json` file in the repository. To acce
 
 ## Resources
 
-- [My Notes on Notion](https://www.notion.so/Week-2-Workflow-Orchestration-17129780dc4a80148debf61e6453fffe?pvs=4)
+- [My Notes on Notion](https://spotted-hardhat-eea.notion.site/Week-2-Workflow-Orchestration-17129780dc4a80148debf61e6453fffe)
 - [Kestra Documentation](https://kestra.io/docs)
 - [Kestra Installation Guide](https://kestra.io/docs/installation/docker)
 - [Course Playlist](https://www.youtube.com/playlist?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb)
