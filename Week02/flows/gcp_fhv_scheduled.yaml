@@ -9,7 +9,7 @@ variables:
   file: "fhv_tripdata_{{trigger.date | date('yyyy-MM')}}.csv"
   gcs_file: "gs://{{kv('GCP_BUCKET_NAME')}}/{{vars.file}}"
   table: "{{kv('GCP_DATASET')}}.fhv_tripdata_{{trigger.date | date('yyyy_MM')}}"
-  data: "{{outputs.extract.outputFiles[fhv_tripdata_' ~ (trigger.date | date('yyyy-MM')) ~ '.csv']}}"
+  data: "{{outputs.extract.outputFiles['fhv_tripdata_' ~ (trigger.date | date('yyyy-MM')) ~ '.csv']}}"
 
 tasks:
   - id: set_label
