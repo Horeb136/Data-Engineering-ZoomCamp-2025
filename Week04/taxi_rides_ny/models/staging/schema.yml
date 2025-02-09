@@ -1,0 +1,9 @@
+version: 2
+sources:
+  - name: staging
+    database: gold-yen-446410-g4
+    schema: trip_data_all
+
+    tables:
+      - name: green_tripdata
+      - name: yellow_tripdata
