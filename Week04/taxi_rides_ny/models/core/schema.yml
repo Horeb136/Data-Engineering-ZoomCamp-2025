@@ -1,13 +1,32 @@
-
 version: 2
 
 models:
+  - name: dim_zones
+    description: >
+      List of unique zones idefied by locationid. 
+      Includes the service zone they correspond to (Green or yellow).
+
+  - name: dm_monthly_zone_revenue
+    description: >
+      Aggregated table of all taxi trips corresponding to both service zones (Green and yellow) per pickup zone, month and service.
+      The table contains monthly sums of the fare elements used to calculate the monthly revenue. 
+      The table contains also monthly indicators like number of trips, and average trip distance. 
+    columns:
+      - name: revenue_monthly_total_amount
+        description: Monthly sum of the the total_amount of the fare charged for the trip per pickup zone, month and service.
+        tests:
+            - not_null:
+                severity: error
+      
   - name: fact_trips
-    description: ""
+    description: >
+      Taxi trips corresponding to both service zones (Green and yellow).
+      The table contains records where both pickup and dropoff locations are valid and known zones. 
+      Each record corresponds to a trip uniquely identified by tripid. 
     columns:
       - name: tripid
         data_type: string
-        description: ""
+        description: "unique identifier conformed by the combination of vendorid and pickup time"
 
       - name: vendorid
         data_type: int64
@@ -106,83 +125,5 @@ models:
         description: ""
 
       - name: payment_type_description
-        data_type: string
-        description: ""
-
-  - name: dm_monthly_zone_revenue
-    description: ""
-    columns:
-      - name: revenue_zone
-        data_type: string
-        description: ""
-
-      - name: revenue_month
-        data_type: timestamp
-        description: ""
-
-      - name: service_type
-        data_type: string
-        description: ""
-
-      - name: revenue_monthly_fare
-        data_type: numeric
-        description: ""
-
-      - name: revenue_monthly_extra
-        data_type: numeric
-        description: ""
-
-      - name: revenue_monthly_mta_tax
-        data_type: numeric
-        description: ""
-
-      - name: revenue_monthly_tip_amount
-        data_type: numeric
-        description: ""
-
-      - name: revenue_monthly_tolls_amount
-        data_type: numeric
-        description: ""
-
-      - name: revenue_monthly_ehail_fee
-        data_type: numeric
-        description: ""
-
-      - name: revenue_monthly_improvement_surcharge
-        data_type: numeric
-        description: ""
-
-      - name: revenue_monthly_total_amount
-        data_type: numeric
-        description: ""
-
-      - name: total_monthly_trips
-        data_type: int64
-        description: ""
-
-      - name: avg_monthly_passenger_count
-        data_type: float64
-        description: ""
-
-      - name: avg_monthly_trip_distance
-        data_type: numeric
-        description: ""
-
-  - name: dim_zones
-    description: ""
-    columns:
-      - name: locationid
-        data_type: int64
-        description: ""
-
-      - name: borough
-        data_type: string
-        description: ""
-
-      - name: zone
-        data_type: string
-        description: ""
-
-      - name: service_zone
         data_type: string
         description: ""
