@@ -9,6 +9,7 @@ DataEngVenv
 # Data and files
 **/data_dictionary_trip_records_yellow.pdf
 **/*.csv
+!/home/horeb/Documents/Projets/Data-Engineering-ZoomCamp-2025/Week04/taxi_rides_ny/seeds
 **/*.parquet
 **/pgpassfile
 **/04_gcp_kv.yaml
