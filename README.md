@@ -83,8 +83,8 @@ Find detailed notes for each week of the course on my Notion page: 🔗 [DataEng
 - 📖 Week 01: **Completed**
 - 📖 Week 02: **Completed**
 - 📖 Week 03: **Completed**
-- 🚀 Week 04: _In Progress_
-- 🔜 Week 05: _Coming Soon_
+- 📖 Week 04: **Completed**
+- 🚀 Week 05: _In Progress_
 - 🔜 Week 06: _Coming Soon_
 
 ---
